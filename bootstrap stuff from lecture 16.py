@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from plotnine import *
 import os
 
-os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
+# os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
 
 dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
