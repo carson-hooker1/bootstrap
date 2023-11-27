@@ -69,13 +69,13 @@ class BootCI:
     
             boot_sample = self.dat.sample(n, replace = True)
 
-            if stat == "median":
+            if self.stat == "median":
                 self.sim_list.append(float(boot_sample.median()))
                 
-            elif stat == "mean":
+            elif self.stat == "mean":
                 self.sim_list.append(float(boot_sample.mean()))
                 
-            elif stat == "std dev": 
+            elif self.stat == "std dev": 
                 self.sim_list.append(float(boot_sample.std()))
                 
             else:
@@ -89,6 +89,14 @@ class BootCI:
     def set_data(self, dat):
         #set the data
         self.data = dat
+    
+    def set_n_boot(self, n_boot):
+        #set the n boot
+        self.n_boot = n_boot
+    
+    def set_stat(self, stat):
+        #set the stats
+        self.stat = stat
 
 
 test = BootCI()
