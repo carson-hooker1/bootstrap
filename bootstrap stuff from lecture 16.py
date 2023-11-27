@@ -46,8 +46,7 @@ theme_classic()
 )
 
 #%%
-# im the biggest ghoul
-# TODO: work with the class and the function ... will owrj
+
 class BootCI:
     
     def __init__(self):
@@ -58,10 +57,26 @@ class BootCI:
         self.ci_level = .95
         self.sim_list = []
     
-    def simulation(self, n):
+    def simulation(self):
         # for loop
         # adds sims to overall list 
+        for _ in range(self.n_boot):
+    
+            boot_sample = dat.sample(n, replace = True)
+
+            if stat == "median":
+                self.sim_list.append(float(boot_sample.median()))
+                
+            elif stat == "mean":
+                self.sim_list.append(float(boot_sample.mean()))
+                
+            elif stat == "std dev": 
+                self.sim_list.append(float(boot_sample.std()))
+                
+            else:
+                raise TypeError("Wrong statistic name")
+                
         
     def clear(self):
-        #cear the sim list
-        
+        #clear the sim list
+        self.sim_list = []
