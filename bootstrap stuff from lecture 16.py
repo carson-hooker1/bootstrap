@@ -6,8 +6,13 @@ from plotnine import *
 import os
 
 # os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
+# dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
+# for me Brennan Chan (Carson comment me out)
+os.chdir("C:/Users/Hi_I_/Downloads")
 dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
+
+
 
 dat = dat["Combined Mileage (mpg)"]
 n = len(dat)
@@ -45,8 +50,6 @@ geom_histogram()+
 theme_classic()
 )
 
-#%%
-
 class BootCI:
     
     def __init__(self):
@@ -83,3 +86,5 @@ class BootCI:
         self.sim_list = []
 
 
+test = BootCI()
+test.dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
