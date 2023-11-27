@@ -85,6 +85,10 @@ class BootCI:
     def clear(self):
         #clear the sim list
         self.sim_list = []
+    
+    def set_data(self, dat):
+        #set the data
+        self.data = dat
 
 
 test = BootCI()
