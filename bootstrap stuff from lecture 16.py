@@ -16,6 +16,8 @@ n_boot  = 10000
 stat = "mean"
 
 boot_stat = []
+
+# method that does that within the class
 for i in range(n_boot):
     
     boot_sample = dat.sample(n, replace = True)
@@ -45,6 +47,7 @@ theme_classic()
 
 #%%
 # im the biggest ghoul
+# TODO: work with the class and the function ... will owrj
 class BootCI:
     
     def __init__(self):
@@ -53,3 +56,12 @@ class BootCI:
         self.n_boot = 0
         self.boot_stat = None
         self.ci_level = .95
+        self.sim_list = []
+    
+    def simulation(self, n):
+        # for loop
+        # adds sims to overall list 
+        
+    def clear(self):
+        #cear the sim list
+        
