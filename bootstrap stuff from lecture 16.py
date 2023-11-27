@@ -50,6 +50,7 @@ geom_histogram()+
 theme_classic()
 )
 
+#%%
 class BootCI:
     
     def __init__(self):
@@ -66,7 +67,7 @@ class BootCI:
         n = len(self.dat)
         for _ in range(self.n_boot):
     
-            boot_sample = dat.sample(n, replace = True)
+            boot_sample = self.dat.sample(n, replace = True)
 
             if stat == "median":
                 self.sim_list.append(float(boot_sample.median()))
@@ -88,3 +89,7 @@ class BootCI:
 
 test = BootCI()
 test.dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
+test.dat = test.dat["Combined Mileage (mpg)"]
+test.n_boot = 10000
+test.simulation()
+print(test.sim_list)
