@@ -60,6 +60,7 @@ class BootCI:
     def simulation(self):
         # for loop
         # adds sims to overall list 
+        n = len(self.dat)
         for _ in range(self.n_boot):
     
             boot_sample = dat.sample(n, replace = True)
@@ -80,3 +81,5 @@ class BootCI:
     def clear(self):
         #clear the sim list
         self.sim_list = []
+
+
