@@ -60,15 +60,14 @@ class BootCI:
         """
         
         self.stat = "mean"
-        self.dat = None
+        self.dat = "2017_Fuel_Economy_Data.csv"
         self.n_boot = 0
         self.boot_stat = None
         self.ci_level = .95
         self.sim_list = []
     
     def simulation(self):
-        # for loop
-        # adds sims to overall list 
+        """for loop adds sims to overall list """
         n = len(self.dat)
         for _ in range(self.n_boot):
     
@@ -88,27 +87,52 @@ class BootCI:
                 
         
     def clear(self):
-        #clear the sim list
+        """clear the sim list"""
         self.sim_list = []
     
     def set_data(self, dat):
+        """clear the sim list"""
         #set the data
         self.data = dat
     
     def set_n_boot(self, n_boot):
-        #set the n boot
+        """
+        The function sets the value of the variable "n_boot" in the class.
+        
+        Prams: 
+            n_boot: The parameter "n_boot" represents the number of bootstrap iterations to perform
+        """
         self.n_boot = n_boot
     
     def set_stat(self, stat):
-        #set the stats
+        """
+        The function sets the value of the "stat" attribute and clears the "sim_list" attribute.
+        
+        Params:
+            stat: The `stat` parameter is the value that you want to set for the `stat` attribute of
+            the object
+        """
         self.stat = stat
         self.sim_list = []
     
     def set_conf(self, ci):
+        """
+        The function sets the confidence interval level.
+        
+        Prams:
+            ci: The parameter "ci" represents the confidence interval level. It is used to set the
+            confidence interval for a particular calculation or analysis
+        """
         #sets the conf interval
         self.ci_level = ci
     
     def give_conf(self):
+        """
+        The function "give_conf" returns the confidence interval of a given list of values.
+        
+        Return: 
+            a tuple containing the lower and upper bounds of the confidence interval.
+        """
         # give conf interval 
         lb = (1 - self.ci_level) / 2
         ub = 1 - lb
@@ -116,6 +140,14 @@ class BootCI:
         return (np.percentile(self.sim_list, [lb, ub]))
     
     def plot_dis(self):
+        """
+        The function `plot_dis` creates a histogram plot using the values in the `sim_list` attribute of
+        the object.
+        
+        Returns:
+            a histogram plot of the data stored in the "sim_list" attribute of the object.
+        """
+        # plots 
         boot_plot = pd.DataFrame({'x': self.sim_list})
         
         return(
@@ -126,7 +158,6 @@ class BootCI:
 
 
 test = BootCI()
-test.dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 test.dat = test.dat["Combined Mileage (mpg)"]
 test.n_boot = 10000
 test.simulation()
