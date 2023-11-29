@@ -97,6 +97,7 @@ class BootCI:
     def set_stat(self, stat):
         #set the stats
         self.stat = stat
+        self.sim_list = []
 
 
 test = BootCI()
