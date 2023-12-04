@@ -6,11 +6,11 @@ from plotnine import *
 import numpy as np
 import os
 
-# os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
+os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
 # dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
 # for me Brennan Chan (Carson comment me out)
-os.chdir("C:/Users/Hi_I_/Downloads")
+#os.chdir("C:/Users/Hi_I_/Downloads")
 dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
 
@@ -55,8 +55,11 @@ class BootCI:
     
     def __init__(self):
         """
-        The above code defines a class with methods for performing bootstrapping simulations and setting
-        parameters for the simulations.
+        The code defines a class with methods for performing bootstrappping
+        simulations and setting parameters for the simulations.
+        At default, the sample size is zero, and must be set later, the default
+        ci_level is 95%, and the default data is the 2017 Fuel Economy Data we
+        used in class.
         """
         
         self.stat = "mean"
@@ -91,49 +94,57 @@ class BootCI:
         self.sim_list = []
     
     def set_data(self, dat):
-        """clear the sim list"""
-        #set the data
+        """Sets the data. Note: Please make sure the data file is in the corre-
+        ct folder on your computer"""
         self.data = dat
     
     def set_n_boot(self, n_boot):
         """
-        The function sets the value of the variable "n_boot" in the class.
+        The function sets the value of the variable "n_boot" in the class. This
+        number must be a positive integer.
         
         Prams: 
-            n_boot: The parameter "n_boot" represents the number of bootstrap iterations to perform
+            n_boot: The parameter "n_boot" represents the number of bootstrap 
+            iterations to perform
         """
         self.n_boot = n_boot
     
     def set_stat(self, stat):
         """
-        The function sets the value of the "stat" attribute and clears the "sim_list" attribute.
+        The function sets the value of the "stat" attribute and clears the
+        "sim_list" attribute. The stat must be set as one of the following:
+            "mean"
+            "median"
+            "std dev"
         
         Params:
-            stat: The `stat` parameter is the value that you want to set for the `stat` attribute of
-            the object
+            stat: The `stat` parameter is the value that you want to set for 
+            the `stat` attribute of the object
         """
         self.stat = stat
         self.sim_list = []
     
     def set_conf(self, ci):
         """
-        The function sets the confidence interval level.
+        The function sets the confidence interval level. The number entered 
+        must be a float strictly between 0 and 1.
         
         Prams:
-            ci: The parameter "ci" represents the confidence interval level. It is used to set the
-            confidence interval for a particular calculation or analysis
+            ci: The parameter "ci" represents the confidence interval level. 
+            It is used to set the confidence interval for a particular
+            calculation or analysis. Must be float between 0 and 1.
         """
-        #sets the conf interval
         self.ci_level = ci
     
     def give_conf(self):
         """
-        The function "give_conf" returns the confidence interval of a given list of values.
+        The function "give_conf" returns the confidence interval of a given 
+        list of values. 
         
         Return: 
-            a tuple containing the lower and upper bounds of the confidence interval.
+            a tuple containing the lower and upper bounds of the confidence 
+            interval.
         """
-        # give conf interval 
         lb = (1 - self.ci_level) / 2
         ub = 1 - lb
         
@@ -141,11 +152,12 @@ class BootCI:
     
     def plot_dis(self):
         """
-        The function `plot_dis` creates a histogram plot using the values in the `sim_list` attribute of
-        the object.
+        The function `plot_dis` creates a histogram plot using the values in 
+        the `sim_list` attribute of the object.
         
         Returns:
-            a histogram plot of the data stored in the "sim_list" attribute of the object.
+            a histogram plot of the data stored in the "sim_list" attribute
+            of the object.
         """
         # plots 
         boot_plot = pd.DataFrame({'x': self.sim_list})
@@ -158,6 +170,7 @@ class BootCI:
 
 
 test = BootCI()
+test.dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 test.dat = test.dat["Combined Mileage (mpg)"]
 test.n_boot = 10000
 test.simulation()
