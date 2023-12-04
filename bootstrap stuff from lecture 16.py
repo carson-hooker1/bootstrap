@@ -1,16 +1,25 @@
 # bootstrap stuff
+# Brennan Chan, Carson Hooker, 
+# =============================================================================
+# Chan_HW7.py
+# Description: Final-ish group project that creates the class BootCI
+#              that gets data graphs for some data set 
 
+# author: Brennan Chan, carson Hooker, Connor Kelly
+# last modified: 12/04
+# due: 12/04
+# =============================================================================
 import pandas as pd
 import matplotlib.pyplot as plt
 from plotnine import *
 import numpy as np
 import os
 
-os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
+#os.chdir("C:\\Users\\Owner\\OneDrive - Baylor University\\School\\Senior Fall Semester\\Statistics\\Spyder things")
 # dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
 # for me Brennan Chan (Carson comment me out)
-#os.chdir("C:/Users/Hi_I_/Downloads")
+os.chdir("C:/Users/Hi_I_/Downloads")
 dat = pd.read_csv("2017_Fuel_Economy_Data.csv")
 
 
